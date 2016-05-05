@@ -8,39 +8,31 @@
 	</parent>
 
 	<groupId>org.webjars</groupId>
-	<artifactId>jquery-waypoints</artifactId>
-	<version>2.0.4-SNAPSHOT</version>
-	<name>jQuery Waypoints</name>
-	<description>WebJar for jQuery Waypoints</description>
+	<artifactId>waypoints</artifactId>
+	<version>4.0.0-SNAPSHOT</version>
+	<name>Waypoints</name>
+	<description>WebJar for Waypoints</description>
 	<url>http://webjars.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<upstream.version>2.0.3</upstream.version>
-		<upstream.url>https://github.com/imakewebthings/jquery-waypoints/archive</upstream.url>
+		<upstream.version>4.0.0</upstream.version>
+		<upstream.url>https://github.com/imakewebthings/waypoints/archive</upstream.url>
 		<destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
 	</properties>
 
 	<licenses>
 		<license>
 			<name>MIT License</name>
-			<url>https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt</url>
+			<url>https://github.com/imakewebthings/waypoints/blob/master/licenses.txt</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery</artifactId>
-			<version>1.8.3</version>
-		</dependency>
-	</dependencies>
-
 	<scm>
-		<url>https://github.com/webjars/jquery-waypoints</url>
-		<connection>scm:git:https://github.com/webjars/jquery-waypoints.git</connection>
-		<developerConnection>scm:git:https://github.com/webjars/jquery-waypoints.git</developerConnection>
+		<url>https://github.com/webjars/waypoints</url>
+		<connection>scm:git:https://github.com/webjars/waypoints.git</connection>
+		<developerConnection>scm:git:https://github.com/webjars/waypoints.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
@@ -66,7 +58,7 @@
 						</goals>
 						<configuration>
 							<url>${upstream.url}</url>
-							<fromFile>v${upstream.version}.zip</fromFile>
+							<fromFile>${upstream.version}.zip</fromFile>
 							<toFile>${project.build.directory}/${project.artifactId}.zip</toFile>
 						</configuration>
 					</execution>
@@ -88,9 +80,7 @@
 								<unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
 								<echo message="moving resources" />
 								<move todir="${destDir}">
-									<fileset dir="${project.build.directory}/${project.artifactId}-${upstream.version}">
-									    <exclude name="test/**" />
-										<include name="**/*.coffee" />
+                                    <fileset dir="${project.build.directory}/${project.artifactId}-${upstream.version}/lib">
 										<include name="**/*.js" />
 									</fileset>
 								</move>
